@@ -68,8 +68,19 @@ class Binary_search_tree:
         parent.set_right(node)
       else:
         return self.insert_node(parent.get_right(), node)
-      
     
+  def print_tree(self):
+    self.print_node(self.root, 0)
+      
+  def print_node(self, node, depth):
+    if node is not None:
+      msg = ""
+      for i in range(0, depth):
+        msg += " "
+      msg += str(node.get_key())
+      print(msg)
+      self.print_node(node.get_left(), depth + 1)
+      self.print_node(node.get_right(), depth + 1)
     
 bst = Binary_search_tree()      
     
@@ -115,3 +126,6 @@ if result is None:
   print("fail")
 else:
   print("success")
+  
+print("---------------")
+bst.print_tree()
